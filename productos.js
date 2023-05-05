@@ -1,3 +1,8 @@
+/**
+ * LISTADO DE TODOS LOS PRODUCTOS DEL MENU
+ * DEL RESTAURANT
+ */
+
 const productos = [
     {
         nombre: 'Hamburguesa Simple',

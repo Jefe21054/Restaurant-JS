@@ -1,3 +1,8 @@
+/**
+ * LOGICA PARA CREAR PEDIDOS Y COBRARLOS
+ * AL USUARIO
+ */
+
 const usuario = {
     nombre: 'Ivan',
     edad: 24,
@@ -7,7 +12,10 @@ const usuario = {
 let pedido = []
 let costoPedido = 0
 
-
+/**
+ * Lista de todos los productos del menu en un 
+ * formato amigable
+*/
 const mostrarMenu = () => {
     console.log(`CODIGO - NOMBRE PRODUCTO - COSTO`)
     for (let producto of productos) {
@@ -15,6 +23,10 @@ const mostrarMenu = () => {
     }
 }
 
+/**
+ * Funcion que permite a un usuario pedir un producto
+ * del menu mostrado con anterioridad
+ */
 const pedirProducto = codigo => {
     if (!codigo || typeof codigo === 'number' || typeof codigo === 'boolean') return 'Ingrese un codigo valido'
 
@@ -26,8 +38,13 @@ const pedirProducto = codigo => {
     return verPedido()
 }
 
+// Funcion que permite ver un pedido
 const verPedido = () => pedido
 
+/**
+ * Funcion que permite calcular el costo de un pedido 
+ * completo realizado por el usuario
+ */
 const calcularCosto = () => {
     let costo = 0
     for (unidad of pedido) {
@@ -37,6 +54,7 @@ const calcularCosto = () => {
     return costoPedido
 }
 
+// Funcion que permite finalizar un pedido
 const finalizarPedido = () => {
     calcularCosto()
     usuario.deuda = costoPedido
@@ -47,14 +65,23 @@ const finalizarPedido = () => {
     return `${usuario.nombre}, debes pagar $${usuario.deuda}`
 }
 
+/**
+ * Funcion que permite pagar todo un pedido y 
+ * entregar cambio si fuera necesario
+ */
 const pagarPedido = montoEntregado => {
-    if (montoEntregado < usuario.deuda){
-        return `No te alcanza para pagar tu pedido`
-    }else if (montoEntregado === usuario.deuda) {
-        usuario.deuda = 0
-        return `Tu pedido ha sido pagado`
+    if (typeof montoEntregado === 'number'){
+        if (montoEntregado < usuario.deuda){
+            return `No te alcanza para pagar tu pedido`
+        }else if (montoEntregado === usuario.deuda) {
+            usuario.deuda = 0
+            return `Tu pedido ha sido pagado`
+        } else {
+            console.log(`Tu pedido ha sido pagado y tu cambio es de $${montoEntregado - usuario.deuda}`)
+            usuario.deuda = 0
+            return `Deuda pagada`
+        }
     } else {
-        usuario.deuda = 0
-        return `Tu pedido ha sido pagado y tu cambio es de $${montoEntregado - usuario.deuda}`
+        return `Dato ingresado de forma erronea`
     }
 }
