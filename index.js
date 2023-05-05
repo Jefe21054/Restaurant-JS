@@ -46,3 +46,15 @@ const finalizarPedido = () => {
 
     return `${usuario.nombre}, debes pagar $${usuario.deuda}`
 }
+
+const pagarPedido = montoEntregado => {
+    if (montoEntregado < usuario.deuda){
+        return `No te alcanza para pagar tu pedido`
+    }else if (montoEntregado === usuario.deuda) {
+        usuario.deuda = 0
+        return `Tu pedido ha sido pagado`
+    } else {
+        usuario.deuda = 0
+        return `Tu pedido ha sido pagado y tu cambio es de $${montoEntregado - usuario.deuda}`
+    }
+}
