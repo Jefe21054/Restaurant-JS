@@ -20,6 +20,8 @@
             "trailingComma": "never",
             "bracketSpacing": true,
             "semi": false
-        }]
+        }],
+        "no-undef": "off",
+        "no-unused-vars": "off"
     }
 }

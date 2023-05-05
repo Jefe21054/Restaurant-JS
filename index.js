@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 /**
  * LOGICA PARA CREAR PEDIDOS Y COBRARLOS
  * AL USUARIO
