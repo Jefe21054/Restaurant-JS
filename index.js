@@ -4,7 +4,7 @@ const usuario = {
     deuda: 0
 }
 
-const pedido = []
+let pedido = []
 let costoPedido = 0
 
 
@@ -35,4 +35,14 @@ const calcularCosto = () => {
     }
     costoPedido = costo
     return costoPedido
+}
+
+const finalizarPedido = () => {
+    calcularCosto()
+    usuario.deuda = costoPedido
+
+    pedido = []
+    costoPedido = 0
+
+    return `${usuario.nombre}, debes pagar $${usuario.deuda}`
 }
