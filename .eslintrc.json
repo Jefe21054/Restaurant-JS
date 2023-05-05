@@ -5,10 +5,21 @@
     },
     "overrides": [
     ],
+    "extends": [
+        "standard",
+        "plugin:prettier/recommended"
+    ],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+    "plugins": ["prettier"],
     "rules": {
+        "prettier/prettier": ["warn", {
+            "singleQuote": true,
+            "trailingComma": "never",
+            "bracketSpacing": true,
+            "semi": false
+        }]
     }
 }

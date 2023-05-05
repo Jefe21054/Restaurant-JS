@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /**
  * LOGICA PARA CREAR PEDIDOS Y COBRARLOS
  * AL USUARIO
@@ -6,7 +8,7 @@
 const usuario = {
   nombre: 'Ivan',
   edad: 24,
-  deuda: 0
+  deuda: 0,
 }
 
 let pedido = []
@@ -15,7 +17,7 @@ let costoPedido = 0
 /**
  * Lista de todos los productos del menu en un
  * formato amigable
-*/
+ */
 const mostrarMenu = () => {
   console.log('CODIGO - NOMBRE PRODUCTO - COSTO')
   for (const producto of productos) {
@@ -27,10 +29,13 @@ const mostrarMenu = () => {
  * Funcion que permite a un usuario pedir un producto
  * del menu mostrado con anterioridad
  */
-const pedirProducto = codigo => {
-  if (!codigo || typeof codigo === 'number' || typeof codigo === 'boolean') return 'Ingrese un codigo valido'
+const pedirProducto = (codigo) => {
+  if (!codigo || typeof codigo === 'number' || typeof codigo === 'boolean')
+    return 'Ingrese un codigo valido'
 
-  const productoEncontrado = productos.find(producto => producto.codigo === codigo)
+  const productoEncontrado = productos.find(
+    (producto) => producto.codigo === codigo,
+  )
   if (!productoEncontrado) return 'El producto no existe'
 
   pedido.push(productoEncontrado)
@@ -64,12 +69,11 @@ const finalizarPedido = () => {
 
   return `${usuario.nombre}, debes pagar $${usuario.deuda}`
 }
-
 /**
  * Funcion que permite pagar todo un pedido y
  * entregar cambio si fuera necesario
  */
-const pagarPedido = montoEntregado => {
+const pagarPedido = (montoEntregado) => {
   if (typeof montoEntregado === 'number') {
     if (montoEntregado < usuario.deuda) {
       return 'No te alcanza para pagar tu pedido'
@@ -77,7 +81,11 @@ const pagarPedido = montoEntregado => {
       usuario.deuda = 0
       return 'Tu pedido ha sido pagado'
     } else {
-      console.log(`Tu pedido ha sido pagado y tu cambio es de $${montoEntregado - usuario.deuda}`)
+      console.log(
+        `Tu pedido ha sido pagado y tu cambio es de $${
+          montoEntregado - usuario.deuda
+        }`,
+      )
       usuario.deuda = 0
       return 'Deuda pagada'
     }

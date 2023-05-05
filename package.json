@@ -166,7 +166,10 @@
     "yocto-queue": "^0.1.0"
   },
   "devDependencies": {
-    "eslint": "^8.39.0"
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
